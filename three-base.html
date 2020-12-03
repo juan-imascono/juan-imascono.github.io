@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Hello, AR Cube!</title>
+	<!-- include three.js library -->
+	<script src='js/three.js'></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+<script>
+
+var scene, camera, renderer;
+
+var markerRoot1, markerRoot2;
+
+var mesh1;
+
+function initialize()
+{
+	scene = new THREE.Scene();
+				
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+	renderer = new THREE.WebGLRenderer();
+	renderer.setClearColor(new THREE.Color('yellow'), 1)
+	renderer.setSize( window.innerWidth, window.innerHeight);
+
+	document.body.appendChild( renderer.domElement );
+
+	let geometry1	= new THREE.CubeGeometry(1,1,1);
+	let material1	= new THREE.MeshBasicMaterial({color: "orange"}); 
+	
+	mesh1 = new THREE.Mesh( geometry1, material1 );
+	
+	scene.add( mesh1 );
+
+    camera.position.z = 5;
+}
+
+
+function animate()
+{
+	requestAnimationFrame(animate);
+    mesh1.rotation.x += 0.01;
+    mesh1.rotation.y += 0.01;
+	renderer.render( scene, camera );
+}
+
+initialize();
+animate();
+
+</script>
+
+</body>
+</html>

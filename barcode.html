@@ -6,13 +6,19 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
   <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="kanji">
+    <a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3">
+        <a-marker preset="hiro">
+            <a-plane scale="1 1 1" position="0 0 0" rotation="-90  0 0" color="red"></a-plane>
+        </a-marker>
+      <a-marker type="barcode" value="7">
         <a-entity
           position="0 0 0"
           scale="0.05 0.05 0.05"
           gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
         ></a-entity>
+      </a-marker>
+      <a-marker type="barcode" value="6">
+        <a-plane scale="1 1 1" position="0 0 0" rotation="-90  0 0" color="green"></a-plane>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
